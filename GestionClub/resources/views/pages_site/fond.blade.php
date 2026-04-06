@@ -7,6 +7,32 @@
 </head>
 <body>
     <div class="container">
+        <nav class="main-menu">
+            <ul>
+                <li><a href="{{ url('/') }}">Accueil</a></li>
+                <li><a href="{{ url('membres') }}">Membres</a></li>
+                @auth
+                    @php 
+                        $membreExist = \App\Models\Membre::where('adresse', Auth::user()->email)->first();
+                    @endphp
+                    @if($membreExist)
+                        <li><a href="{{ url('modifier/'.$membreExist->id) }}">Éditer mon profil</a></li>
+                    @else
+                        <li><a href="{{ url('creer') }}">Créer mon profil</a></li>
+                    @endif
+                    <li><a href="{{ url('identite') }}">Profil</a></li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="logout-btn">Déconnexion ({{ Auth::user()->name }})</button>
+                        </form>
+                    </li>
+                @else
+                    <li><a href="{{ route('login') }}">Connexion</a></li>
+                    <li><a href="{{ route('register') }}">Inscription</a></li>
+                @endauth
+            </ul>
+        </nav>
         <div class="titre_contenu">
             @yield('titre_contenu')
         </div>

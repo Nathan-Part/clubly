@@ -13,7 +13,7 @@ Modification des infos du membre
 
 @section('contenu')
 <div class="formgroup">
-    {!! html()->model($un_membre)->form('PATCH', url('miseAJour', $un_membre->id))->open() !!}
+    {!! html()->model($un_membre)->form('POST', url('miseAJour/'.$un_membre->id))->open() !!}
     <div class="formgroup">
         {{ html()->label('Nom', 'nom') }}
         {{ html()->text('nom')->class('formcontrol') }}
@@ -24,7 +24,11 @@ Modification des infos du membre
     </div>
     <div class="formgroup">
         {{ html()->label('Adresse électronique', 'adresse') }}
-        {{ html()->text('adresse')->class('formcontrol') }}
+        {{ html()->text('adresse')->class('formcontrol')->attribute('readonly', true) }}
+    </div>
+    <div class="formgroup">
+        {{ html()->label('Biographie (Description)', 'biographie') }}
+        {{ html()->textarea('biographie', $un_membre->biographie?->description)->class('formcontrol') }}
     </div>
     <p>
     </p>

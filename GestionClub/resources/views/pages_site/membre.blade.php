@@ -3,5 +3,8 @@
 {{ $un_membre->prenom }} {{ $un_membre->nom }}
 </h3>
 <div class='h2'>
-{{ $un_membre->adresse }}
+    {{ $un_membre->adresse }}
 </div>
+<hr>
+<h3>Biographie</h3>
+<p>{{ $un_membre->biographie?->description ?? 'Aucun texte biographique.' }}</p>

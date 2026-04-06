@@ -9,18 +9,18 @@ Création d'un nouveau membre
 @stop
 @section('contenu')
 <div class="formgroup">
-    {!! html()->form('POST', url('creation/membre'))->open() !!}
+    {!! html()->form('POST', url('enregistrer'))->open() !!}
     <div class="formgroup">
-        {!! html()->label('Nom', 'nom') !!}
-        {!! html()->text('nom')->class('formcontrol')->required() !!}
+        {{ html()->label('Prénom du membre', 'prenom') }}
+        {{ html()->text('prenom')->class('formcontrol') }}
     </div>
     <div class="formgroup">
-        {!! html()->label('Prenom', 'prenom') !!}
-        {!! html()->text('prenom')->class('formcontrol')->required() !!}
+        {{ html()->label('Nom du membre', 'nom') }}
+        {{ html()->text('nom', $user->name)->class('formcontrol') }}
     </div>
     <div class="formgroup">
-        {!! html()->label('Adresse électronique', 'adresse') !!}
-        {!! html()->email('adresse')->class('formcontrol')->required() !!}
+        {{ html()->label('Identifiant Email (automatique)', 'adresse') }}
+        {{ html()->text('adresse', $user->email)->class('formcontrol')->attribute('readonly', true) }}
     </div>
     <p>
     </p>
