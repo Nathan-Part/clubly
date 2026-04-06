@@ -15,6 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
             'validated' => \App\Http\Middleware\EnsureUserIsValidated::class,
         ]);
+
+        $middleware->redirectTo(
+            users: '/',
+        );
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

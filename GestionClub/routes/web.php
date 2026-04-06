@@ -15,10 +15,6 @@ Route::get('membrescss', 'App\Http\Controllers\ControleurMembres@indexCss');
 Route::get('membre/{numero}', 'App\Http\Controllers\ControleurMembres@afficher');
 
 // Routes requiring authentication and validation
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified', 'validated'])->name('dashboard');
-
 Route::middleware(['auth', 'validated'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
