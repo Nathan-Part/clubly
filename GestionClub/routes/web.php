@@ -30,6 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::post('miseAJour/{numero}', 'App\Http\Controllers\ControleurMembres@miseAJour');
     Route::get('identite', 'App\Http\Controllers\ControleurMembres@identite');
 });
-Route::get('/protege','App\Http\Controllers\ControleurMembres@acces_protege')->middleware('auth');
+Route::get('/protege','App\Http\Controllers\ControleurMembres@acces_protege');
 
 require __DIR__.'/auth.php';

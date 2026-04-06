@@ -100,8 +100,12 @@ class ControleurMembres extends Controller
     }
 
     public function acces_protege() {
-        $infos_utilisateur = Auth::user();
-        $utilisateur = $infos_utilisateur->name;
-        echo "<h1>Utilisateur authentifié : ".$utilisateur."</h1>";
+        if (Auth::check()) {
+            $infos_utilisateur = Auth::user();
+            $utilisateur = $infos_utilisateur->name;
+            echo "<h1>Utilisateur authentifié : ".$utilisateur."</h1>";
+        } else {
+            echo "<h1>Accès non autorisé</h1>";
+        }
     }
 }
