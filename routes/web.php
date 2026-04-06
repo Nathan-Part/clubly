@@ -1,0 +1,39 @@
+<?php
+
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::get('nouvellepage', 'App\Http\Controllers\MonControleur@retourneNouvellePage');
+Route::get('exemple', 'App\Http\Controllers\MonControleur@retournePageExemple');
+Route::get('membres', 'App\Http\Controllers\ControleurMembres@index');
+Route::get('membrescss', 'App\Http\Controllers\ControleurMembres@indexCss');
+Route::get('membre/{numero}', 'App\Http\Controllers\ControleurMembres@afficher');
+
+Route::middleware(['auth', 'validated'])->group(function () {
+    Route::get('creer', 'App\Http\Controllers\ControleurMembres@creer');
+    Route::post('enregistrer', 'App\Http\Controllers\ControleurMembres@enregistrer');
+    Route::get('modifier/{numero}', 'App\Http\Controllers\ControleurMembres@editer');
+    Route::post('miseAJour/{numero}', 'App\Http\Controllers\ControleurMembres@miseAJour');
+    Route::get('identite', 'App\Http\Controllers\ControleurMembres@identite');
+});
+Route::get('/protege','App\Http\Controllers\ControleurMembres@acces_protege')->middleware(['auth', 'validated']);
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/validations', 'App\Http\Controllers\AdminController@validations')->name('admin.validations');
+    Route::post('/valider/{id}', 'App\Http\Controllers\AdminController@valider')->name('admin.valider');
+});
+require __DIR__.'/auth.php';
