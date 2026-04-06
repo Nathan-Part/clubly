@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Membre;
+use Illuminate\Support\Facades\Auth;
 
 class ControleurMembres extends Controller
 {
@@ -59,5 +60,22 @@ class ControleurMembres extends Controller
         $un_membre->adresse = $la_soumission->adresse;
         $un_membre->save();
         return "Membre modifié";
+    }
+
+    public function identite() {
+        if (Auth::check())
+        {
+            $utilisateur = Auth::user();
+            $id = Auth::id();
+            return view('pages_site/identite',compact('utilisateur','id'));
+        }
+        else
+            echo "<h1>Accès non autorisé</h1>";
+    }
+
+    public function acces_protege() {
+        $infos_utilisateur = Auth::user();
+        $utilisateur = $infos_utilisateur->name;
+        echo "<h1>Utilisateur authentifié : ".$utilisateur."</h1>";
     }
 }
