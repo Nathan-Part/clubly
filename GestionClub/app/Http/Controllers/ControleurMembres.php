@@ -8,14 +8,56 @@ use App\Models\Membre;
 
 class ControleurMembres extends Controller
 {
+    // des variables
+    protected $les_membres;
+    protected $soumissions;
+
+    public function __construct(Membre $membres, Request $requetes) {
+        $this->les_membres = $membres;
+        $this->soumissions = $requetes;
+    }
+
     public function index() {
-        $les_membres = Membre::all();
-        return view('pages_site/membres', compact('les_membres'));
+        $les_membres = $this->les_membres->all();
+        return view('pages_site/consultation_edition', compact('les_membres'));
     }
 
     public function indexCss()
     {
-        $les_membres = Membre::all();
+        $les_membres = $this->les_membres->all();
         return view('pages_site/membrescss', compact('les_membres'));
+    }
+
+    public function afficher($numero) {
+        $un_membre = Membre::findOrFail($numero);
+        return view('pages_site/membre', compact('un_membre'));
+    }
+
+    public function creer() {
+        return view('pages_site/creation');
+    }
+
+    public function enregistrer(Request $request) {
+        $membre = new Membre();
+        $membre->nom = $request->nom;
+        $membre->adresse = $request->adresse;
+        $membre->prenom = $request->prenom;
+        $membre->save();
+        return "Membre créé";
+    }
+
+    public function editer($numero) {
+        $un_membre = $this->les_membres->find($numero);
+        return view('pages_site/edition', compact('un_membre'));
+    }
+
+    public function miseAJour($numero) {
+        $un_membre = $this->les_membres->find($numero);
+        $la_soumission = $this->soumissions;
+        $un_membre->nom = $la_soumission->nom;
+        $un_membre->prenom = $la_soumission->prenom;
+        $un_membre->adresse = $la_soumission->adresse;
+        $un_membre->save();
+        return "Membre modifié";
     }
 }
