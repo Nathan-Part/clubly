@@ -3,7 +3,13 @@
 {{ $un_membre->prenom }} {{ $un_membre->nom }}
 </h3>
 <div class='h2'>
-    {{ $un_membre->adresse }}
+    @if(Auth::check() && (Auth::user()->is_validated || Auth::user()->is_admin))
+        {{ $un_membre->adresse }}
+    @elseif(Auth::check())
+        <i>[Email masqué - En attente de validation]</i>
+    @else
+        <i>[Email masqué - Connectez-vous]</i>
+    @endif
 </div>
 <hr>
 <h3>Biographie</h3>

@@ -14,7 +14,15 @@ Membres du club
 @section('contenu')
     @foreach ($les_membres as $membre)
         <div class="h1">{{ $membre->prenom }} {{ $membre->nom }}</div>
-        <div class="h2">{{ $membre->adresse }}</div>
+        <div class="h2">
+            @if(Auth::check() && (Auth::user()->is_validated || Auth::user()->is_admin))
+                {{ $membre->adresse }}
+            @elseif(Auth::check())
+                <i>[Email masqué - En attente de validation]</i>
+            @else
+                <i>[Email masqué - Connectez-vous]</i>
+            @endif
+        </div>
         <br>
     @endforeach
 @stop

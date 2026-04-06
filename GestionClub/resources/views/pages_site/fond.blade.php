@@ -21,6 +21,9 @@
                         <li><a href="{{ url('creer') }}">Créer mon profil</a></li>
                     @endif
                     <li><a href="{{ url('identite') }}">Profil</a></li>
+                    @if(Auth::user()->is_admin)
+                        <li><a href="{{ route('admin.validations') }}"><strong>Validations</strong></a></li>
+                    @endif
                     <li>
                         <form method="POST" action="{{ route('logout') }}" style="display:inline;">
                             @csrf

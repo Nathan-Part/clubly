@@ -21,9 +21,13 @@ Liste des membres
         @endauth
     </h3>
     <div class='h2'>
-        @auth
+        @if(Auth::check() && (Auth::user()->is_validated || Auth::user()->is_admin))
             {{ $membre->adresse }}
-        @endauth
+        @elseif(Auth::check())
+            <i>[Adresse masquée - En attente de validation]</i>
+        @else
+            <i>[Adresse masquée - Connectez-vous]</i>
+        @endif
     </div>
 @endforeach
 <a href="{{ url('/creer') }}"> Créer nouveau membre </a>
