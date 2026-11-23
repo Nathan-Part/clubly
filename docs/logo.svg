@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="160" viewBox="0 0 580 160" role="img" aria-label="Clubly">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="word" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#0d9488"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: three members inside a rounded badge, with a "validated" check -->
+  <rect x="8" y="8" width="144" height="144" rx="36" fill="url(#bg)"/>
+  <g fill="#ffffff">
+    <circle cx="52" cy="66" r="13" opacity="0.75"/>
+    <path d="M28 112c0-15 11-26 24-26s24 11 24 26z" opacity="0.75"/>
+    <circle cx="108" cy="66" r="13" opacity="0.75"/>
+    <path d="M84 112c0-15 11-26 24-26s24 11 24 26z" opacity="0.75"/>
+    <circle cx="80" cy="56" r="17"/>
+    <path d="M50 118c0-19 13-33 30-33s30 14 30 33z"/>
+  </g>
+  <circle cx="122" cy="118" r="20" fill="#ffffff"/>
+  <path d="M112 118l7 7 13-14" fill="none" stroke="#0d9488" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Wordmark -->
+  <text x="180" y="106" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="78" font-weight="700" letter-spacing="-1" fill="url(#word)">Clubly</text>
+  <text x="184" y="136" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="17" font-weight="600" letter-spacing="4" fill="#64748b">CLUB MEMBERS, MADE SIMPLE</text>
+</svg>

@@ -1,6 +1,6 @@
 <div align="center">
 
-# GestionClub
+<img src="docs/logo.svg" alt="Clubly" width="440" />
 
 **A small Laravel app to manage the members of a club.**
 
@@ -18,7 +18,7 @@ A public member directory with biographies, accounts that must be approved by an
 
 </div>
 
-> The interface is in French. The Laravel application lives in the [`GestionClub/`](GestionClub/) folder.
+> The interface is in French. The Laravel application lives in the [`GestionClub/`](GestionClub/) folder (the project's original code name).
 
 ## Features
 
