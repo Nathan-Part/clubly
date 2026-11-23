@@ -14,6 +14,7 @@ A public member directory with biographies, accounts that must be approved by an
 ![Alpine.js](https://img.shields.io/badge/Alpine.js-3-8bc0d0?logo=alpinedotjs&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-8-646cff?logo=vite&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-default-003b57?logo=sqlite&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e)](LICENSE)
 
 </div>
 
@@ -93,3 +94,7 @@ GestionClub/
 ├── routes/                  # web.php, auth.php
 └── tests/                   # Feature and unit tests
 ```
+
+## License
+
+[MIT](LICENSE) © Nathan-Part
