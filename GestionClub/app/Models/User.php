@@ -31,4 +31,9 @@ class User extends Authenticatable
             'is_admin' => 'boolean',
         ];
     }
+
+    public function membre()
+    {
+        return $this->hasOne(Membre::class);
+    }
 }
